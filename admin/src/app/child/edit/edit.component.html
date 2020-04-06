@@ -1,0 +1,29 @@
+<mat-card>
+    <mat-form-field  >
+        <input matInput type="search" placeholder="Ex..16121a05c4" [(ngModel)]="rollnum" required><br>
+    </mat-form-field>
+    <button mat-button (click)="onSubmit()">Search</button>
+</mat-card>
+
+<mat-card *ngIf="bool>0">
+    <mat-form-field>
+       <input matInput type="text" placeholder="Name"  [(ngModel)]="name">
+    </mat-form-field>
+    <br>
+    <mat-form-field>
+        <input matInput type="text" placeholder=" Enter RollNumber" value={{rollnum}} [(ngModel)]="rollnum">
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput type="number"  placeholder="Enter Batch" minlength="4" maxlength="4" [(ngModel)]="batch">
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput type="text" placeholder="Enter Degree" [(ngModel)]="degree">
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput type="number"  placeholder="Enter Mobile Number" minlength="10" maxlength="13" [(ngModel)]="phonenum">
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput type="email" placeholder="Enter Gmail" [(ngModel)]="gmail">
+    </mat-form-field>
+    <button mat-button (click)="rollno()">Create User</button>
+</mat-card>

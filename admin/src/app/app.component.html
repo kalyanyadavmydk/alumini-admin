@@ -1,0 +1,99 @@
+<mat-card>
+  <button mat-button color="accent" (click)="createuser()">Create or Update Alumini</button>
+  <button mat-button color="primary" (click)="getuser()">Search for Alumini</button>
+</mat-card>
+<mat-card *ngIf="update>0">
+    <h4>Search Alumini Based on</h4>
+    <mat-form-field>
+      <mat-label>Search Alumini Based on</mat-label>
+      <mat-select  #filter> 
+        <mat-option value="Rollno" > Rollno</mat-option>
+        <mat-option value="Batch" > Batch</mat-option>
+        <mat-option value="Degree" > Degree</mat-option>
+      </mat-select>
+      
+    </mat-form-field>
+    <button mat-button color="primary" (click)="issubmit(filter.value)">Select</button>
+    <div *ngIf="roll==='Rollno'">
+      <mat-form-field  >
+        <input matInput type="search" placeholder="Ex..16121a05c4" [(ngModel)]="rollnum" required><br>
+        
+      </mat-form-field>
+      <button mat-button (click)="rollno()">Search</button>
+      <div *ngIf="rollnumber">
+        <mat-card>
+          Name-     {{rollnumber.name}}  RollNumber-     {{rollnumber.rollnum}}      PhoneNumber---  {{rollnumber.phonenum}}
+        </mat-card>
+        <br>
+         <mat-card>
+          Degree---      {{rollnumber.degree}}       Batch:::            {{rollnumber.batch}}
+         </mat-card>
+         <br><br>
+         <mat-card>
+          Gmail:::       {{rollnumber.gmail}}
+          
+         </mat-card>
+        <br>
+         <button mat-stroked-button color="primary" (click)="generate()">Generate QR code</button>
+      </div>
+     </div>
+
+
+
+     <div *ngIf="roll==='Batch'">
+      <mat-form-field  >
+        <input matInput type="number" placeholder="Ex..2016" [(ngModel)]="Batch" required><br>
+        
+      </mat-form-field>
+      <button mat-button (click)="batch()">Search</button>
+      <mat-card *ngIf="batch_data">
+        {{batch_data}}
+       </mat-card>
+     </div>
+
+
+     
+     <div *ngIf="roll==='Degree'">
+      <mat-form-field  >
+        <input matInput type="search" placeholder="Ex..Engneering" [(ngModel)]="Degree" required>
+        
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput type="number" placeholder="Ex..2016" [(ngModel)]="Batch" required><br>
+      </mat-form-field>
+      <button mat-button (click)="degree()">Search</button>
+    
+     
+     <mat-card *ngIf="degree_data">
+      {{degree_data}}
+     </mat-card>
+    </div>
+    </mat-card>
+    <br>
+    <br>
+
+
+    
+    <div *ngIf="create>0">
+      <app-edit></app-edit>
+    </div>
+
+
+<!-- 
+    <h1>angularx-qrcode demo implementation</h1> -->
+    <div *ngIf="qrdata">
+      <qrcode [qrdata]="qrdata" [size]="256" [level]="'M'"></qrcode>
+    </div>
+    <br>
+    
+    <!-- <div class="text">
+      <label>
+        Type to change: <input [(ngModel)]="qrdata" placeholder="name">
+      </label>
+      <br>
+      <br>
+      <button (click)="changeValue('Bruce')">Change Value to Bruce</button>
+      <button (click)="changeValue('Peter Parker')">Change Value to Peter Parker</button>
+      <button (click)="changeValue('42')">Change Value to 42</button>
+    </div>
+     -->
